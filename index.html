@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning</title>
+    <meta
+      name="description"
+      content="SPHERE mitigates plasticity loss in MoE policies for deep reinforcement learning by preserving spectral plasticity."
+    />
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- three.js (WebGL) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <!-- Page logic -->
+    <script defer src="js/task_knob.js"></script>
+    <script defer src="js/sphere_viz.js"></script>
+
+    <!-- MathJax (optional, for equations) -->
+    <script>
+      window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] } };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="container page-container">
+      <div class="top-nav">
+        <div class="top-nav-inner px-3 py-2 d-flex align-items-center justify-content-between flex-wrap gap-2">
+          <div class="d-flex align-items-center gap-2">
+            <span class="nav-brand">SPHERE</span>
+            <span class="pill-hint">Project Page</span>
+          </div>
+          <div class="d-flex align-items-center gap-1 flex-wrap">
+            <a class="nav-pill" href="#tldr">TL;DR</a>
+            <a class="nav-pill" href="#interactive">Interactive</a>
+            <a class="nav-pill" href="#figures">Figures</a>
+            <a class="nav-pill" href="#bibtex">BibTeX</a>
+          </div>
+        </div>
+      </div>
+      <header class="py-4">
+        <div class="hero-card">
+          <div class="hero-title">
+            <div class="kicker">Mixture-of-Experts · Deep Reinforcement Learning · Plasticity Loss</div>
+            <h1 class="display-title">
+              SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning
+            </h1>
+            <div class="hero-subtitle">
+              SPHERE preserves update-direction diversity by regularizing weighted expert features toward a more isotropic spectrum.
+            </div>
+          </div>
+
+          <div class="hero-links">
+            <a class="btn btn-outline-primary btn-sm" href="assets/SPHERE.pdf">
+              <i class="ai ai-open-access"></i>
+              Paper (PDF)
+            </a>
+            <a class="btn btn-outline-primary btn-sm disabled" href="#" aria-disabled="true" tabindex="-1">
+              <i class="fa-regular fa-file-powerpoint"></i>
+              Slides (TBA)
+            </a>
+            <a class="btn btn-outline-primary btn-sm disabled" href="#" aria-disabled="true" tabindex="-1">
+              <i class="fab fa-github"></i>
+              Code (TBA)
+            </a>
+          </div>
+
+          <div class="hero-authors">
+            <div class="authors">
+              <span><a href="https://liruiluo.github.io/" target="_blank" rel="noreferrer">Lirui Luo</a></span>
+              <span>·</span>
+              <span><a href="https://guoxizhang.com/" target="_blank" rel="noreferrer">Guoxi Zhang</a></span>
+              <span>·</span>
+              <span><a href="https://sbx126.github.io/" target="_blank" rel="noreferrer">Hongming Xu</a></span>
+              <span>·</span>
+              <span><a href="https://www.yangyaodong.com/" target="_blank" rel="noreferrer">Yaodong Yang</a></span>
+              <span>·</span>
+              <span><a href="https://congfang-ml.github.io/" target="_blank" rel="noreferrer">Cong Fang</a></span>
+              <span>·</span>
+              <span><a href="https://liqing.io" target="_blank" rel="noreferrer">Qing Li</a></span>
+            </div>
+            <div class="affiliations">
+              <span>Peking University</span>
+              <span>·</span>
+              <span>BIGAI</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="content" class="pb-5">
+        <section class="section-card" id="tldr">
+          <h2 class="section-title">TL;DR</h2>
+          <p class="section-text mb-0">
+            SPHERE preserves update-direction diversity by regularizing weighted expert features toward a more isotropic spectrum.
+          </p>
+        </section>
+
+        <section class="section-card" id="interactive">
+          <div class="figure-card mb-3">
+            <div class="figure-title">Spectral Plasticity and SPHERE</div>
+            <div class="figure-lead">
+              <div class="figure-kv">
+	                <div class="kv">
+	                  <span class="kv-k">What</span>
+	                  <span class="kv-v">Defined as the effective rank of the eNTK matrix. Higher means a more isotropic spectrum that stretches update directions more uniformly.</span>
+	                </div>
+                <div class="kv">
+                  <span class="kv-k">Why</span>
+                  <span class="kv-v">When the spectrum collapses, updates become effectively low-dimensional, so new experience can’t change the policy meaningfully.</span>
+                </div>
+	                <div class="kv">
+	                  <span class="kv-k">How</span>
+	                  <span class="kv-v">SPHERE regularizes weighted expert features to prevent spectral collapse and keep update directions diverse throughout training.</span>
+	                </div>
+              </div>
+            </div>
+	            <img class="img-fluid rounded" src="figures_sphere/teaser.png" alt="Plasticity loss as loss of spectral plasticity" />
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <h2 class="section-title mb-0">Interactive Intuition: “Sphere” vs Collapse</h2>
+            <div class="pill-hint">Drag the knob · or use the slider · or press Play</div>
+          </div>
+
+          <p class="section-text">
+            The visualization below turns this view into a concrete geometry. Think of a unit sphere of possible gradient directions: multiplying by an
+            eNTK matrix $\mathbf{K}$ maps the sphere into an ellipsoid. If $\mathbf{K}$ becomes low-rank, one axis shrinks
+            toward zero and the ellipsoid degenerates into a near-plane/line. SPHERE keeps the spectrum more isotropic.
+          </p>
+          <p class="section-text">
+            Top row (<span style="opacity:0.9">$\nabla_f L$</span>) shows the input sphere of directions; bottom row
+            (<span style="opacity:0.9">$\mathbf{K}\nabla_f L$</span>) shows the stretching process.
+          </p>
+
+          <div class="viz-card" id="vizRoot">
+            <div class="viz-toolbar">
+              <div class="control control-grow">
+                <div class="control-label">Task</div>
+                <div class="task-controls">
+                  <div id="taskKnob" class="task-knob" aria-label="task knob"></div>
+                  <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" />
+                  <button id="playBtn" class="btn btn-sm btn-primary" type="button">Play</button>
+                  <button id="resetBtn" class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+                </div>
+                <div class="task-readout">
+                  <span class="task-badge" id="taskIdxBadge">Task 5</span>
+                  <span class="task-name" id="taskName">Run</span>
+                </div>
+              </div>
+              <div class="control">
+                <div class="control-label">Mesh</div>
+                <div class="form-check form-switch m-0">
+                  <input class="form-check-input" type="checkbox" role="switch" id="meshToggle" checked />
+                </div>
+              </div>
+            </div>
+
+            <div class="viz-body">
+              <div class="viz-canvas">
+                <canvas id="sphereCanvas"></canvas>
+                <div class="viz-overlay">
+                  <div class="viz-label left">
+                    <div class="tag">Baseline (Top‑K MoE)</div>
+                    <div class="sub">collapsed spectrum → near low-rank</div>
+                  </div>
+                  <div class="viz-label right">
+                    <div class="tag sphere">SPHERE</div>
+                    <div class="sub">isotropic spectrum → diverse updates</div>
+                  </div>
+
+                  <div class="viz-stage-labels" aria-hidden="true">
+                    <div class="stage s1"><span class="eq">∇</span><span class="txt">f</span><span class="txt">L</span></div>
+                    <div class="stage s2"><span class="txt">K</span><span class="eq">∇</span><span class="txt">f</span><span class="txt">L</span></div>
+                  </div>
+                </div>
+                <div class="viz-fallback" id="vizFallback" hidden>
+                  WebGL unavailable. Please use a WebGL-capable browser to see the 3D visualization.
+                </div>
+              </div>
+
+		            </div>
+              </div>
+              <p class="section-text mt-3">
+                The geometry here is driven by real Fig.1 exports: the top-3 eigenvalues of $\mathbf{K}$ in a 3D subspace (used to shape the
+                ellipsoid for each task) and gradient-direction samples projected into that subspace.
+              </p>
+	        </section>
+
+        <section class="section-card" id="figures">
+          <div class="row g-3">
+            <div class="col-12 col-lg-6">
+              <div class="subsection-title">The Ubiquity of Spectral Plasticity Loss</div>
+              <div class="figure-card">
+                <img
+                  class="img-fluid rounded"
+                  src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
+                  alt="HumanoidBench success: RL vs CRL"
+                />
+                <div class="figure-caption">Across architectures, performance degrades under continual RL (CRL) compared to per-task RL.</div>
+              </div>
+              <div class="figure-card mt-3">
+                <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
+                <div class="figure-caption">During CRL, $r_e(\mathbf{K})$ drops across baselines; SPHERE maintains higher spectral plasticity.</div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="subsection-title">Mechanism: Increasing $r_e(\mathbf{K})$ Preserves Spectral Plasticity</div>
+              <div class="figure-card">
+                <img
+                  class="img-fluid rounded"
+                  src="figures_sphere/reA_reK_batch_scatter_h1_run.png"
+                  alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
+                />
+                <div class="figure-caption">
+                  Effective rank of the weighted expert feature Gram correlates with effective rank of the eNTK, motivating feature-Gram regularization.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3 mt-0">
+            <div class="col-12">
+              <div class="subsection-title">Qualitative Analysis</div>
+              <div class="figure-card">
+                <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" />
+                <div class="figure-caption">
+                  Qualitative analysis. Using a fixed held-out batch of states from a Stair-task replay buffer, we run t-SNE on last-layer
+                  gating-weighted expert features from checkpoints after each task. Each point is colored by the dominant singular-direction index of
+                  the weighted feature matrix (largest squared projection). Without SPHERE, points quickly concentrate on a single dominant component;
+                  with SPHERE, multiple components remain active throughout the sequence.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" id="bibtex">
+          <h2 class="section-title">BibTeX</h2>
+          <pre class="bibtex"><code>@article{luo2026sphere,
+  title   = {SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning},
+  author  = {Luo, Lirui and Zhang, Guoxi and Xu, Hongming and Yang, Yaodong and Fang, Cong and Li, Qing},
+  year    = {2026},
+  note    = {Preprint}
+}</code></pre>
+        </section>
+
+        <footer class="pt-2 pb-4 footer">
+          <div class="small text-muted">
+            This site is a static project page. Visualization and figures are designed to provide intuition for SPHERE.
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
