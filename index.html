@@ -19,7 +19,18 @@
     <link rel="stylesheet" href="index.css" />
 
     <!-- three.js (WebGL) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+      window.THREE = THREE;
+      window.dispatchEvent(new Event("sphere:three-ready"));
+    </script>
 
     <!-- Page logic -->
     <script defer src="js/task_knob.js"></script>
@@ -39,7 +50,7 @@
         <div class="top-nav-inner px-3 py-2 d-flex align-items-center justify-content-between flex-wrap gap-2">
           <div class="d-flex align-items-center gap-2">
             <span class="nav-brand">SPHERE</span>
-            <span class="pill-hint">Project Page</span>
+            <span class="pill-hint">ICML 2026 · Accepted</span>
           </div>
           <div class="d-flex align-items-center gap-1 flex-wrap">
             <a class="nav-pill" href="#tldr">TL;DR</a>
@@ -51,29 +62,44 @@
       </div>
       <header class="py-4">
         <div class="hero-card">
-          <div class="hero-title">
-            <div class="kicker">Mixture-of-Experts · Deep Reinforcement Learning · Plasticity Loss</div>
-            <h1 class="display-title">
-              SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning
-            </h1>
-            <div class="hero-subtitle">
-              SPHERE preserves update-direction diversity by regularizing weighted expert features toward a more isotropic spectrum.
-            </div>
-          </div>
+          <div class="hero-grid">
+            <div class="hero-title">
+              <div class="kicker">Mixture-of-Experts · Continual Deep Reinforcement Learning · Spectral Plasticity</div>
+              <h1 class="display-title">
+                SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning
+              </h1>
+              <div class="hero-subtitle">
+                A Parseval-style regularizer that keeps MoE policy updates spectrally diverse instead of collapsing into a few directions.
+              </div>
 
-          <div class="hero-links">
-            <a class="btn btn-outline-primary btn-sm" href="assets/SPHERE.pdf">
-              <i class="ai ai-open-access"></i>
-              Paper (PDF)
-            </a>
-            <a class="btn btn-outline-primary btn-sm disabled" href="#" aria-disabled="true" tabindex="-1">
-              <i class="fa-regular fa-file-powerpoint"></i>
-              Slides (TBA)
-            </a>
-            <a class="btn btn-outline-primary btn-sm disabled" href="#" aria-disabled="true" tabindex="-1">
-              <i class="fab fa-github"></i>
-              Code (TBA)
-            </a>
+              <div class="hero-links">
+                <a class="btn btn-primary btn-sm hero-cta" href="assets/SPHERE.pdf">
+                  <i class="ai ai-open-access"></i>
+                  Paper PDF
+                </a>
+                <a class="btn btn-outline-primary btn-sm hero-secondary disabled" href="#" aria-disabled="true" tabindex="-1">
+                  <i class="fab fa-github"></i>
+                  Code soon
+                </a>
+                <a class="btn btn-outline-primary btn-sm hero-secondary disabled" href="#" aria-disabled="true" tabindex="-1">
+                  <i class="fa-regular fa-file-powerpoint"></i>
+                  Slides soon
+                </a>
+              </div>
+            </div>
+
+            <aside class="hero-metrics" aria-label="Key SPHERE results">
+              <div class="metric-eyebrow">At a glance</div>
+              <div class="metric-card">
+                <span class="metric-value">+133%</span>
+                <span class="metric-label">MetaWorld average success</span>
+              </div>
+              <div class="metric-card">
+                <span class="metric-value">+50%</span>
+                <span class="metric-label">HumanoidBench average success</span>
+              </div>
+              <div class="metric-note">vs. unregularized MoE under continual RL</div>
+            </aside>
           </div>
 
           <div class="hero-authors">
@@ -83,8 +109,6 @@
               <span><a href="https://guoxizhang.com/" target="_blank" rel="noreferrer">Guoxi Zhang</a></span>
               <span>·</span>
               <span><a href="https://sbx126.github.io/" target="_blank" rel="noreferrer">Hongming Xu</a></span>
-              <span>·</span>
-              <span><a href="https://www.yangyaodong.com/" target="_blank" rel="noreferrer">Yaodong Yang</a></span>
               <span>·</span>
               <span><a href="https://congfang-ml.github.io/" target="_blank" rel="noreferrer">Cong Fang</a></span>
               <span>·</span>
@@ -101,14 +125,33 @@
 
       <main id="content" class="pb-5">
         <section class="section-card" id="tldr">
-          <h2 class="section-title">TL;DR</h2>
-          <p class="section-text mb-0">
-            SPHERE preserves update-direction diversity by regularizing weighted expert features toward a more isotropic spectrum.
-          </p>
+          <div class="section-heading-row">
+            <div>
+              <h2 class="section-title">TL;DR</h2>
+              <p class="section-text mb-0">
+                SPHERE frames MoE plasticity loss as spectral collapse in the empirical NTK, then keeps the update geometry better conditioned by regularizing weighted expert features.
+              </p>
+            </div>
+            <span class="pill-hint">Mechanism-first RL regularization</span>
+          </div>
+          <div class="tldr-grid">
+            <div class="tldr-item">
+              <span class="tldr-k">Problem</span>
+              <span class="tldr-v">Continual RL can make later-task updates effectively low-dimensional.</span>
+            </div>
+            <div class="tldr-item">
+              <span class="tldr-k">Method</span>
+              <span class="tldr-v">A tractable Parseval penalty on weighted expert features.</span>
+            </div>
+            <div class="tldr-item">
+              <span class="tldr-k">Effect</span>
+              <span class="tldr-v">Higher spectral plasticity and stronger continual-control performance.</span>
+            </div>
+          </div>
         </section>
 
         <section class="section-card" id="interactive">
-          <div class="figure-card mb-3">
+          <div class="figure-card lead-figure mb-3">
             <div class="figure-title">Spectral Plasticity and SPHERE</div>
             <div class="figure-lead">
               <div class="figure-kv">
@@ -151,8 +194,8 @@
                 <div class="task-controls">
                   <div id="taskKnob" class="task-knob" aria-label="task knob"></div>
                   <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" />
-                  <button id="playBtn" class="btn btn-sm btn-primary" type="button">Play</button>
-                  <button id="resetBtn" class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+                  <button id="playBtn" class="btn btn-sm btn-primary control-primary" type="button">Play</button>
+                  <button id="resetBtn" class="btn btn-sm btn-outline-secondary control-secondary" type="button">Reset</button>
                 </div>
                 <div class="task-readout">
                   <span class="task-badge" id="taskIdxBadge">Task 5</span>
@@ -199,6 +242,13 @@
 	        </section>
 
         <section class="section-card" id="figures">
+          <div class="section-heading-row figures-heading">
+            <div>
+              <h2 class="section-title">Evidence</h2>
+              <p class="section-text mb-0">Key figures connect continual-control failure, spectral collapse, and SPHERE’s feature-Gram regularization.</p>
+            </div>
+            <span class="pill-hint">MetaWorld · HumanoidBench</span>
+          </div>
           <div class="row g-3">
             <div class="col-12 col-lg-6">
               <div class="subsection-title">The Ubiquity of Spectral Plasticity Loss</div>
@@ -247,11 +297,11 @@
 
         <section class="section-card" id="bibtex">
           <h2 class="section-title">BibTeX</h2>
-          <pre class="bibtex"><code>@article{luo2026sphere,
+          <pre class="bibtex"><code>@inproceedings{luo2026sphere,
   title   = {SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning},
-  author  = {Luo, Lirui and Zhang, Guoxi and Xu, Hongming and Yang, Yaodong and Fang, Cong and Li, Qing},
-  year    = {2026},
-  note    = {Preprint}
+  author    = {Luo, Lirui and Zhang, Guoxi and Xu, Hongming and Fang, Cong and Li, Qing},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026}
 }</code></pre>
         </section>
 

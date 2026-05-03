@@ -420,8 +420,9 @@
       const compact = w < 980 || aspect < 1.15;
 
       const x = compact ? 1.55 : 1.95;
-      // Vertical spacing between the 2 rows (∇fL, K∇fL).
-      const y = compact ? 1.25 : 1.55;
+      // Vertical spacing between the 2 rows (∇fL, K∇fL). Keep the lower row a touch higher
+      // so the bottom stage label reads as aligned instead of sitting on the canvas edge.
+      const y = compact ? 1.14 : 1.42;
 
       const ys = [y, -y];
       for (let s = 0; s < STAGE_COUNT; s++) {
@@ -562,7 +563,7 @@
     return { ok: true, renderer, scene, camera, baselineStages, sphereStages, render, applyEigs, setCloudForStages, stageCount: STAGE_COUNT };
   }
 
-  async function main() {
+  async function initSphereViz() {
     const taskSlider = document.getElementById("taskSlider");
     const playBtn = document.getElementById("playBtn");
     const resetBtn = document.getElementById("resetBtn");
@@ -802,9 +803,20 @@
     setTask(defaultIdx, { from: "init" });
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => main().catch((e) => console.error(e)));
-  } else {
-    main().catch((e) => console.error(e));
+  function whenReady() {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", whenReady, { once: true });
+      return;
+    }
+    if (!window.THREE) {
+      window.addEventListener("sphere:three-ready", () => initSphereViz().catch((e) => console.error(e)), { once: true });
+      setTimeout(() => {
+        if (!window.THREE) initSphereViz().catch((e) => console.error(e));
+      }, 4000);
+      return;
+    }
+    initSphereViz().catch((e) => console.error(e));
   }
+
+  whenReady();
 })();

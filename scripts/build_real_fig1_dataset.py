@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build website-friendly JSON from real Fig1 outputs (NPZ).
 
-Input: directory produced by `lm_reward_jax/data/visual_sphere/scripts/fig1/*`:
+Input: directory produced by `code/data/visual_sphere/scripts/fig1/*`:
   - baseline__<task_key>__seedN.npz
   - sphere__<task_key>__seedN.npz
   - untrained__<task_key>__seedN.npz (optional)
