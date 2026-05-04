@@ -1528,3 +1528,40 @@ code {
     justify-self: start;
   }
 }
+
+
+/* Accessibility and motion polish. */
+.nav-pill:focus-visible,
+.hero-authors a:focus-visible,
+.task-knob:focus-visible,
+.btn:focus-visible,
+.form-check-input:focus-visible,
+.form-range:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.24);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .metric-card:hover,
+  .tldr-item:hover,
+  .figure-card:hover,
+  .nav-pill:hover,
+  .btn.hero-secondary:hover,
+  .btn.control-secondary:hover {
+    transform: none;
+  }
+}

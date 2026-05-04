@@ -17,3 +17,11 @@ Run locally (required for `fetch()`):
 ```bash
 python -m http.server 8000 --directory .
 ```
+
+
+## Publication boundary
+
+Camera-ready PDF, code, and slides are intentionally shown as pending on the page.
+Do not commit unfinished camera-ready PDFs under this static site root; otherwise
+static hosting can expose them even without a visible link. Keep unpublished drafts
+outside the repo (for example `../local-unpublished/`) until they are ready to link.
