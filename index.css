@@ -1163,9 +1163,10 @@ a.resource-chip:hover {
 }
 
 .resource-chip.primary {
-  color: rgba(30, 41, 59, 0.84);
-  background: rgba(248, 250, 252, 0.94);
-  border-color: rgba(203, 213, 225, 0.92);
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--paper-blue), var(--paper-purple));
+  border-color: rgba(37, 99, 235, 0.08);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.24);
 }
 
 .resource-icon {
@@ -1180,6 +1181,12 @@ a.resource-chip:hover {
   font-size: 9px;
   font-weight: 850;
   letter-spacing: -0.02em;
+}
+
+.resource-chip.primary .resource-icon {
+  color: #1d4ed8;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.60);
 }
 
 .resource-state {
@@ -1306,7 +1313,7 @@ a.resource-chip:hover {
 }
 
 
-/* Mobile reading pass: reduce hero crowding and keep the nav compact. */
+/* Narrow viewport fallback only; desktop/laptop remains the primary design target. */
 @media (max-width: 620px) {
   .page-container {
     padding-left: 10px;

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://liruiluo.github.io/sphere-page/sitemap.xml
