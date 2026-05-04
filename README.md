@@ -1,4 +1,4 @@
-# sphere.github.io
+# SPHERE Project Page
 
 ## Real Fig1 (seed=2)
 
@@ -17,6 +17,12 @@ Run locally (required for `fetch()`):
 ```bash
 python -m http.server 8000 --directory .
 ```
+
+## Local preview
+
+This repository is the static project page for the ICML 2026 accepted paper **SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning**.
+
+The page is currently optimized for desktop / laptop reading, matching the expected paper-project-page audience. Mobile support should not drive layout decisions unless that requirement changes.
 
 
 ## Publication boundary

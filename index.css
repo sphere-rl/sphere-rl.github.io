@@ -1123,8 +1123,8 @@ code {
 
 /* Keep unavailable resources visible but not styled as active calls-to-action. */
 .display-title {
-  font-size: clamp(32px, 3.85vw, 48px);
-  line-height: 1.14;
+  font-size: clamp(31px, 3.55vw, 44px);
+  line-height: 1.15;
 }
 
 .hero-links {
@@ -1203,7 +1203,7 @@ code {
 
 .story-step {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 132px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -1214,7 +1214,7 @@ code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 94px;
+  min-width: 116px;
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
@@ -1223,7 +1223,7 @@ code {
   border: 1px solid rgba(37, 99, 235, 0.14);
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 820;
   letter-spacing: 0.035em;
 }

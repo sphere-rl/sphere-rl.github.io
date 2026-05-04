@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning" />
+    <meta name="keywords" content="SPHERE, ICML 2026, continual reinforcement learning, mixture-of-experts, spectral plasticity, HumanoidBench, MetaWorld" />
+    <meta name="author" content="Lirui Luo, Guoxi Zhang, Hongming Xu, Cong Fang, Qing Li" />
+    <meta name="robots" content="index, follow" />
 
     <title>SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning</title>
     <meta
@@ -18,6 +22,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="figures_sphere/teaser.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="citation_title" content="SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning" />
+    <meta name="citation_author" content="Luo, Lirui" />
+    <meta name="citation_author" content="Zhang, Guoxi" />
+    <meta name="citation_author" content="Xu, Hongming" />
+    <meta name="citation_author" content="Fang, Cong" />
+    <meta name="citation_author" content="Li, Qing" />
+    <meta name="citation_conference_title" content="International Conference on Machine Learning" />
+    <meta name="citation_publication_date" content="2026" />
 
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,11 +120,11 @@
               <div class="metric-eyebrow">Main results</div>
               <div class="metric-card">
                 <span class="metric-value">+133%</span>
-                <span class="metric-label">MetaWorld average success vs. w/o SPHERE</span>
+                <span class="metric-label">MetaWorld CRL average success vs. Top-K MoE</span>
               </div>
               <div class="metric-card">
                 <span class="metric-value">+50%</span>
-                <span class="metric-label">HumanoidBench average success vs. w/o SPHERE</span>
+                <span class="metric-label">HumanoidBench CRL average success vs. Top-K MoE</span>
               </div>
               <div class="metric-note">Continual-RL setting · see result panels below</div>
             </aside>
@@ -171,18 +183,18 @@
             <div class="figure-title">Why Policies Stop Learning in Continual RL</div>
             <div class="figure-lead">
               <div class="figure-kv">
-	                <div class="kv">
-	                  <span class="kv-k">Phenomenon</span>
-	                  <span class="kv-v">In continual RL, policies keep receiving new experience but can stop changing effectively.</span>
-	                </div>
+                <div class="kv">
+                  <span class="kv-k">Phenomenon</span>
+                  <span class="kv-v">In continual RL, policies keep receiving new experience but can stop changing effectively.</span>
+                </div>
                 <div class="kv">
                   <span class="kv-k">Diagnosis</span>
                   <span class="kv-v">The eNTK effective rank drops, showing that updates concentrate into too few functional directions.</span>
                 </div>
-	                <div class="kv">
-	                  <span class="kv-k">SPHERE</span>
-	                  <span class="kv-v">SPHERE adds a practical Parseval penalty on weighted expert features to keep update directions more diverse.</span>
-	                </div>
+                <div class="kv">
+                  <span class="kv-k">SPHERE</span>
+                  <span class="kv-v">SPHERE adds a practical Parseval penalty on weighted expert features to keep update directions more diverse.</span>
+                </div>
               </div>
             </div>
             <picture>
@@ -211,8 +223,8 @@
               <div class="control control-grow">
                 <div class="control-label">Task</div>
                 <div class="task-controls">
-                  <div id="taskKnob" class="task-knob" aria-label="Select visualization task"></div>
-                  <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" aria-label="Select visualization task" />
+                  <div id="taskKnob" class="task-knob" aria-label="Rotary task selector"></div>
+                  <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" aria-label="Linear task selector" />
                   <button id="playBtn" class="btn btn-sm btn-primary control-primary" type="button" aria-pressed="false">Play</button>
                   <button id="resetBtn" class="btn btn-sm btn-outline-secondary control-secondary" type="button">Reset</button>
                 </div>
@@ -255,21 +267,21 @@
                 </div>
               </div>
 
-		            </div>
-              </div>
-              <p class="section-text mt-3">
-                This animation is grounded in real Fig. 1 exports: the top-3 eigenvalues of $\mathbf{K}$ shape the ellipsoid for each task, and
-                gradient-direction samples are projected into the same 3D subspace.
-              </p>
-	        </section>
+            </div>
+          </div>
+          <p class="section-text mt-3">
+            This animation is grounded in real Fig. 1 exports: the top-3 eigenvalues of $\mathbf{K}$ shape the ellipsoid for each task, and
+            gradient-direction samples are projected into the same 3D subspace.
+          </p>
+        </section>
 
         <section class="section-card figures-card" id="figures">
           <div class="section-heading-row figures-heading">
             <div>
               <h2 class="section-title">Experiments &amp; Analysis</h2>
-              <p class="section-text mb-0">The story follows the paper: first show the continual-RL failure mode, then diagnose spectral collapse, then present SPHERE’s results and supporting analyses.</p>
+              <p class="section-text mb-0">The story follows the paper: phenomenon, spectral diagnosis, MetaWorld and HumanoidBench performance, then design ablation and representation analyses.</p>
             </div>
-            <span class="pill-hint">Phenomenon · Diagnosis · Results · Ablations</span>
+            <span class="pill-hint">Phenomenon · Diagnosis · Performance · Design · Analysis</span>
           </div>
           <div class="figure-story">
             <article class="story-step">
@@ -301,9 +313,9 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">Result</div>
+              <div class="story-step-index">MetaWorld</div>
               <div class="story-step-body">
-                <div class="subsection-title">Result: SPHERE Narrows the Continual-RL Gap on MetaWorld</div>
+                <div class="subsection-title">Performance: SPHERE Narrows the Continual-RL Gap on MetaWorld</div>
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
@@ -318,9 +330,9 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">Result</div>
+              <div class="story-step-index">HumanoidBench</div>
               <div class="story-step-body">
-                <div class="subsection-title">Result: SPHERE Also Improves HumanoidBench</div>
+                <div class="subsection-title">Performance: SPHERE Also Improves HumanoidBench</div>
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
@@ -335,9 +347,9 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">Ablation</div>
+              <div class="story-step-index">Design</div>
               <div class="story-step-body">
-                <div class="subsection-title">Ablation: What Matters in SPHERE?</div>
+                <div class="subsection-title">Design Ablation: What Matters in SPHERE?</div>
                 <div class="ablation-stack">
                   <div class="figure-card ablation-table-card">
                     <div class="figure-title">HumanoidBench CRL design ablation</div>
@@ -366,31 +378,14 @@
                           <td>0.40 ± 0.08</td>
                         </tr>
                         <tr>
-                          <td>Gradient-Gram regularization</td>
+                          <td>Gradient-factor regularization</td>
                           <td>0.43 ± 0.09</td>
                         </tr>
                       </tbody>
                     </table>
                     <div class="figure-caption">
-                      The default last-layer, routing-weighted cross-expert feature Gram is the strongest tested design; alternatives help, but none matches the full SPHERE setup.
+                      Mirroring the paper's HumanoidBench CRL ablation, the default last-layer, routing-weighted cross-expert feature Gram is the strongest tested design; alternatives help, but none matches the full SPHERE setup.
                     </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="story-step">
-              <div class="story-step-index">Mechanism</div>
-              <div class="story-step-body">
-                <div class="subsection-title">Mechanism: Weighted Expert Features Track $r_e(\mathbf{K})$</div>
-                <div class="figure-card compact-figure">
-                  <img
-                    class="img-fluid rounded"
-                    src="figures_sphere/reA_reK_batch_scatter_h1_run.png" width="748" height="682" loading="lazy" decoding="async"
-                    alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
-                  />
-                  <div class="figure-caption">
-                    The weighted expert-feature Gram tracks the eNTK effective-rank trend, giving a practical target for preserving spectral plasticity.
                   </div>
                 </div>
               </div>
@@ -411,6 +406,23 @@
                 </div>
               </div>
             </article>
+            <article class="story-step">
+              <div class="story-step-index">Proxy Check</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Proxy Check: Weighted Expert Features Track $r_e(\mathbf{K})$</div>
+                <div class="figure-card compact-figure">
+                  <img
+                    class="img-fluid rounded"
+                    src="figures_sphere/reA_reK_batch_scatter_h1_run.png" width="748" height="682" loading="lazy" decoding="async"
+                    alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
+                  />
+                  <div class="figure-caption">
+                    The weighted expert-feature Gram tracks the eNTK effective-rank trend, supporting the paper's practical proxy for spectral plasticity.
+                  </div>
+                </div>
+              </div>
+            </article>
+
           </div>
         </section>
 
