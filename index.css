@@ -675,6 +675,27 @@ a:hover {
   margin-bottom: 14px;
 }
 
+.mechanism-heading {
+  margin-bottom: 16px;
+}
+
+.viz-subsection-title {
+  color: rgba(8, 18, 36, 0.94);
+  font-size: 21px;
+  font-weight: 780;
+  letter-spacing: -0.02em;
+}
+
+.viz-subsection-title::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 3px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--paper-blue), var(--paper-purple));
+}
+
 .bibtex {
   border: 1px solid rgba(30, 41, 59, 0.08);
   border-radius: 18px;
