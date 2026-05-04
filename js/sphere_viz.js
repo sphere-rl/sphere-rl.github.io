@@ -665,6 +665,9 @@
 
       taskIdxBadge.textContent = `Task ${idx + 1}`;
       taskName.textContent = preset.tasks[idx] ?? `Task ${idx + 1}`;
+      const taskText = `${taskIdxBadge.textContent}: ${taskName.textContent}`;
+      knobEl.setAttribute("aria-valuetext", taskText);
+      taskSlider.setAttribute("aria-valuetext", taskText);
 
       const p = preset.tasks.length <= 1 ? 0 : idx / (preset.tasks.length - 1);
 
@@ -732,6 +735,7 @@
     function stopPlay() {
       playing = false;
       playBtn.textContent = "Play";
+      playBtn.setAttribute("aria-pressed", "false");
       if (playTimer) {
         clearInterval(playTimer);
         playTimer = null;
@@ -741,6 +745,7 @@
     function startPlay() {
       playing = true;
       playBtn.textContent = "Pause";
+      playBtn.setAttribute("aria-pressed", "true");
       playTimer = setInterval(() => {
         const next = (idx + 1) % preset.tasks.length;
         setTask(next, { from: "play" });

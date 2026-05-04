@@ -23,12 +23,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="index.css" />
 
     <!-- three.js (WebGL) -->
@@ -78,7 +74,7 @@
           <div class="hero-grid">
             <div class="hero-title">
               <div class="acceptance-badge" aria-label="Accepted paper at ICML 2026">
-                <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+                <span class="icon-mark acceptance-icon" aria-hidden="true">★</span>
                 <span>Accepted to ICML 2026</span>
               </div>
               <div class="kicker">Mixture-of-Experts · Continual Deep Reinforcement Learning · Spectral Plasticity</div>
@@ -90,17 +86,20 @@
               </div>
 
               <div class="hero-links">
-                <span class="resource-chip primary pending" aria-disabled="true">
-                  <i class="ai ai-open-access"></i>
-                  Camera-ready PDF soon
+                <span class="resource-chip primary pending" aria-disabled="true" aria-label="Camera-ready PDF pending">
+                  <span class="resource-icon" aria-hidden="true">PDF</span>
+                  <span>Camera-ready PDF soon</span>
+                  <span class="resource-state">pending</span>
                 </span>
-                <span class="resource-chip pending" aria-disabled="true">
-                  <i class="fab fa-github"></i>
-                  Code soon
+                <span class="resource-chip pending" aria-disabled="true" aria-label="Code pending">
+                  <span class="resource-icon" aria-hidden="true">&lt;/&gt;</span>
+                  <span>Code soon</span>
+                  <span class="resource-state">pending</span>
                 </span>
-                <span class="resource-chip pending" aria-disabled="true">
-                  <i class="fa-regular fa-file-powerpoint"></i>
-                  Slides soon
+                <span class="resource-chip pending" aria-disabled="true" aria-label="Slides pending">
+                  <span class="resource-icon" aria-hidden="true">PPT</span>
+                  <span>Slides soon</span>
+                  <span class="resource-state">pending</span>
                 </span>
               </div>
             </div>
@@ -212,9 +211,9 @@
               <div class="control control-grow">
                 <div class="control-label">Task</div>
                 <div class="task-controls">
-                  <div id="taskKnob" class="task-knob" aria-label="task knob"></div>
-                  <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" />
-                  <button id="playBtn" class="btn btn-sm btn-primary control-primary" type="button">Play</button>
+                  <div id="taskKnob" class="task-knob" aria-label="Select visualization task"></div>
+                  <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" aria-label="Select visualization task" />
+                  <button id="playBtn" class="btn btn-sm btn-primary control-primary" type="button" aria-pressed="false">Play</button>
                   <button id="resetBtn" class="btn btn-sm btn-outline-secondary control-secondary" type="button">Reset</button>
                 </div>
                 <div class="task-readout">
@@ -225,14 +224,17 @@
               <div class="control">
                 <div class="control-label">Mesh</div>
                 <div class="form-check form-switch m-0">
-                  <input class="form-check-input" type="checkbox" role="switch" id="meshToggle" checked />
+                  <input class="form-check-input" type="checkbox" role="switch" id="meshToggle" aria-label="Show mesh surface" checked />
                 </div>
               </div>
             </div>
 
             <div class="viz-body">
               <div class="viz-canvas">
-                <canvas id="sphereCanvas"></canvas>
+                <p id="vizDescription" class="sr-only">
+                  Interactive 3D visualization comparing baseline Top-K MoE and SPHERE update geometry across HumanoidBench tasks.
+                </p>
+                <canvas id="sphereCanvas" role="img" aria-describedby="vizDescription"></canvas>
                 <div class="viz-overlay">
                   <div class="viz-label left">
                     <div class="tag">Baseline (Top‑K MoE)</div>
