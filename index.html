@@ -8,8 +8,16 @@
     <title>SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning</title>
     <meta
       name="description"
-      content="SPHERE mitigates plasticity loss in MoE policies for deep reinforcement learning by preserving spectral plasticity."
+      content="SPHERE is an ICML 2026 accepted paper on preserving spectral plasticity in MoE policies for continual deep reinforcement learning."
     />
+    <meta property="og:title" content="SPHERE · ICML 2026 Accepted Paper" />
+    <meta
+      property="og:description"
+      content="Why MoE policies stop adapting in continual RL, how spectral collapse appears, and how SPHERE keeps update directions diverse."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="figures_sphere/teaser.png" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" />
@@ -94,16 +102,16 @@
             </div>
 
             <aside class="hero-metrics" aria-label="Key SPHERE results">
-              <div class="metric-eyebrow">At a glance</div>
+              <div class="metric-eyebrow">Main results</div>
               <div class="metric-card">
                 <span class="metric-value">+133%</span>
-                <span class="metric-label">MetaWorld average success</span>
+                <span class="metric-label">MetaWorld average success vs. w/o SPHERE</span>
               </div>
               <div class="metric-card">
                 <span class="metric-value">+50%</span>
-                <span class="metric-label">HumanoidBench average success</span>
+                <span class="metric-label">HumanoidBench average success vs. w/o SPHERE</span>
               </div>
-              <div class="metric-note">vs. unregularized MoE under continual RL</div>
+              <div class="metric-note">Continual-RL setting · see result panels below</div>
             </aside>
           </div>
 
@@ -134,7 +142,7 @@
             <div>
               <h2 class="section-title">TL;DR</h2>
               <p class="section-text mb-0">
-                SPHERE frames MoE plasticity loss as spectral collapse in the empirical NTK, then keeps the update geometry better conditioned by regularizing weighted expert features.
+                SPHERE studies why MoE policies lose plasticity in continual RL, diagnoses the drop through spectral collapse in the empirical NTK, and regularizes weighted expert features to keep update geometry better conditioned.
               </p>
             </div>
             <span class="pill-hint">Phenomenon → diagnosis → regularization</span>
@@ -150,7 +158,7 @@
             </div>
             <div class="tldr-item">
               <span class="tldr-k">Effect</span>
-              <span class="tldr-v">Higher spectral plasticity and stronger continual-control performance.</span>
+              <span class="tldr-v">Higher spectral plasticity, stronger continual-control performance, and clearer feature usage across tasks.</span>
             </div>
           </div>
         </section>
@@ -294,7 +302,7 @@
                     alt="MetaWorld success rate across methods under RL and CRL"
                   />
                   <div class="figure-caption">
-                    On MetaWorld, the CRL success-rate drop is severe across baselines, while SPHERE retains the strongest continual-control performance.
+                    On MetaWorld, SPHERE narrows the gap between per-task RL and continual RL, retaining the strongest average success among the compared methods.
                   </div>
                 </div>
               </div>
@@ -311,7 +319,7 @@
                     alt="HumanoidBench success rate across methods under RL and CRL"
                   />
                   <div class="figure-caption">
-                    On HumanoidBench, SPHERE also retains higher continual-control success than unregularized MoE and other continual-learning baselines.
+                    On HumanoidBench, the same pattern holds: SPHERE improves average success over unregularized MoE and the continual-learning baselines.
                   </div>
                 </div>
               </div>
@@ -373,7 +381,7 @@
                     alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
                   />
                   <div class="figure-caption">
-                    Effective rank of the weighted expert feature Gram correlates with effective rank of the eNTK, motivating feature-Gram regularization.
+                    The weighted expert-feature Gram tracks the eNTK effective-rank trend, giving a practical target for preserving spectral plasticity.
                   </div>
                 </div>
               </div>
