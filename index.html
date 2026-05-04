@@ -55,7 +55,7 @@
           </div>
           <div class="d-flex align-items-center gap-1 flex-wrap">
             <a class="nav-pill" href="#tldr">TL;DR</a>
-            <a class="nav-pill" href="#interactive">Interactive</a>
+            <a class="nav-pill" href="#interactive">Mechanism</a>
             <a class="nav-pill" href="#figures">Results</a>
             <a class="nav-pill" href="#bibtex">BibTeX</a>
           </div>
@@ -74,7 +74,7 @@
                 SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning
               </h1>
               <div class="hero-subtitle">
-                A practical Parseval penalty on weighted expert features that helps preserve spectral plasticity during continual RL.
+                Continual RL can make MoE policies stop adapting. SPHERE adds a practical Parseval penalty on weighted expert features to keep update directions diverse.
               </div>
 
               <div class="hero-links">
@@ -137,7 +137,7 @@
                 SPHERE frames MoE plasticity loss as spectral collapse in the empirical NTK, then keeps the update geometry better conditioned by regularizing weighted expert features.
               </p>
             </div>
-            <span class="pill-hint">Mechanism-first RL regularization</span>
+            <span class="pill-hint">Phenomenon → diagnosis → regularization</span>
           </div>
           <div class="tldr-grid">
             <div class="tldr-item">
@@ -178,18 +178,18 @@
           </div>
 
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-            <h2 class="section-title mb-0">Interactive Geometry: Sphere vs. Collapse</h2>
+            <h2 class="section-title mb-0">Update Geometry: Collapse vs. SPHERE</h2>
             <div class="pill-hint">Drag the knob · or use the slider · or press Play</div>
           </div>
 
           <p class="section-text">
-            The visualization below turns this view into a concrete geometry. Think of a unit sphere of possible gradient directions: multiplying by an
-            eNTK matrix $\mathbf{K}$ maps the sphere into an ellipsoid. If $\mathbf{K}$ becomes low-rank, one axis shrinks
-            toward zero and the ellipsoid degenerates into a near-plane/line. SPHERE keeps the spectrum more isotropic.
+            The visualization makes the diagnosis concrete. A unit sphere of possible gradient directions becomes an ellipsoid after multiplication by the
+            eNTK matrix $\mathbf{K}$. When $\mathbf{K}$ becomes low-rank, one axis shrinks toward zero and the ellipsoid degenerates
+            toward a near-plane or line; SPHERE keeps the spectrum more isotropic.
           </p>
           <p class="section-text">
-            Top row (<span style="opacity:0.9">$\nabla_f L$</span>) shows the input sphere of directions; bottom row
-            (<span style="opacity:0.9">$\mathbf{K}\nabla_f L$</span>) shows the stretching process.
+            Top row (<span class="math-inline-soft">$\nabla_f L$</span>) shows the input sphere of directions; bottom row
+            (<span class="math-inline-soft">$\mathbf{K}\nabla_f L$</span>) shows the stretching process.
           </p>
 
           <div class="viz-card" id="vizRoot">
@@ -241,8 +241,8 @@
 		            </div>
               </div>
               <p class="section-text mt-3">
-                The geometry here is driven by real Fig.1 exports: the top-3 eigenvalues of $\mathbf{K}$ in a 3D subspace (used to shape the
-                ellipsoid for each task) and gradient-direction samples projected into that subspace.
+                This animation is grounded in real Fig. 1 exports: the top-3 eigenvalues of $\mathbf{K}$ shape the ellipsoid for each task, and
+                gradient-direction samples are projected into the same 3D subspace.
               </p>
 	        </section>
 
@@ -382,14 +382,11 @@
             <article class="story-step">
               <div class="story-step-index">Qualitative</div>
               <div class="story-step-body">
-                <div class="subsection-title">Feature-Space Qualitative Analysis</div>
+                <div class="subsection-title">Qualitative: Feature Collapse Across Tasks</div>
                 <div class="figure-card">
                   <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" />
                   <div class="figure-caption">
-                    Qualitative analysis. Using a fixed held-out batch of states from a Stair-task replay buffer, we run t-SNE on last-layer
-                    gating-weighted expert features from checkpoints after each task. Each point is colored by the dominant singular-direction index of
-                    the weighted feature matrix (largest squared projection). Without SPHERE, points quickly concentrate on a single dominant component;
-                    with SPHERE, multiple components remain active throughout the sequence.
+                    Using fixed held-out Stair states, we visualize last-layer routing-weighted expert features after each task. Without SPHERE, points quickly concentrate on one dominant singular direction; with SPHERE, multiple directions remain active across the sequence.
                   </div>
                 </div>
               </div>

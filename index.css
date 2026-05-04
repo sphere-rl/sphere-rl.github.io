@@ -1163,6 +1163,11 @@ code {
   .hero-metrics {
     grid-template-columns: 1fr;
   }
+
+  .lead-figure .kv {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
 }
 
 /* Prominent venue acceptance marker. */
@@ -1297,6 +1302,27 @@ code {
   color: #1d4ed8;
   font-weight: 820;
   background: linear-gradient(90deg, rgba(239, 246, 255, 0.90), rgba(245, 243, 255, 0.68));
+}
+
+/* Opening explanation should read as a concept ladder, not three parallel jargon cards. */
+.lead-figure .figure-kv {
+  grid-template-columns: 1fr;
+}
+
+.lead-figure .kv {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+}
+
+.lead-figure .kv-k {
+  margin-bottom: 0;
+}
+
+.math-inline-soft {
+  opacity: 0.9;
 }
 
 @media (max-width: 720px) {
