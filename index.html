@@ -182,7 +182,10 @@
 	                </div>
               </div>
             </div>
-	            <img class="img-fluid rounded" src="figures_sphere/teaser.png" alt="Plasticity loss as loss of spectral plasticity" />
+            <picture>
+              <source srcset="figures_sphere/teaser.webp" type="image/webp" />
+              <img class="img-fluid rounded" src="figures_sphere/teaser.png" alt="Plasticity loss as loss of spectral plasticity" loading="eager" decoding="async" />
+            </picture>
           </div>
 
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -270,7 +273,7 @@
                 <div class="figure-card">
                   <img
                     class="img-fluid rounded"
-                    src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
+                    src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png" loading="lazy" decoding="async"
                     alt="HumanoidBench success: RL vs CRL"
                   />
                   <div class="figure-caption">
@@ -285,7 +288,7 @@
               <div class="story-step-body">
                 <div class="subsection-title">Diagnosis: Spectral Plasticity Collapses During CRL</div>
                 <div class="figure-card">
-                  <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
+                  <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" loading="lazy" decoding="async" alt="Effective rank during training" />
                   <div class="figure-caption">The performance drop is accompanied by lower $r_e(\mathbf{K})$: baselines lose spectral plasticity, while SPHERE keeps the update geometry better conditioned.</div>
                 </div>
               </div>
@@ -298,7 +301,7 @@
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
-                    src="figures_sphere/metaworld_methods_success_rl_vs_crl_bars_trim.png"
+                    src="figures_sphere/metaworld_methods_success_rl_vs_crl_bars_trim.png" loading="lazy" decoding="async"
                     alt="MetaWorld success rate across methods under RL and CRL"
                   />
                   <div class="figure-caption">
@@ -315,7 +318,7 @@
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
-                    src="figures_sphere/humanoidbench_methods_success_rl_vs_crl_bars_relu_trim.png"
+                    src="figures_sphere/humanoidbench_methods_success_rl_vs_crl_bars_relu_trim.png" loading="lazy" decoding="async"
                     alt="HumanoidBench success rate across methods under RL and CRL"
                   />
                   <div class="figure-caption">
@@ -377,7 +380,7 @@
                 <div class="figure-card compact-figure">
                   <img
                     class="img-fluid rounded"
-                    src="figures_sphere/reA_reK_batch_scatter_h1_run.png"
+                    src="figures_sphere/reA_reK_batch_scatter_h1_run.png" loading="lazy" decoding="async"
                     alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
                   />
                   <div class="figure-caption">
@@ -392,7 +395,10 @@
               <div class="story-step-body">
                 <div class="subsection-title">Qualitative: Feature Collapse Across Tasks</div>
                 <div class="figure-card">
-                  <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" />
+                  <picture>
+                    <source srcset="figures_sphere/case.webp" type="image/webp" />
+                    <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" loading="lazy" decoding="async" />
+                  </picture>
                   <div class="figure-caption">
                     Using fixed held-out Stair states, we visualize last-layer routing-weighted expert features after each task. Without SPHERE, points quickly concentrate on one dominant singular direction; with SPHERE, multiple directions remain active across the sequence.
                   </div>
