@@ -1365,6 +1365,92 @@ code {
   background: linear-gradient(90deg, rgba(239, 246, 255, 0.90), rgba(245, 243, 255, 0.68));
 }
 
+
+/* Mobile reading pass: reduce hero crowding and keep the nav compact. */
+@media (max-width: 620px) {
+  .page-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .top-nav-inner {
+    justify-content: center !important;
+    gap: 8px;
+    padding: 10px !important;
+  }
+
+  .top-nav-inner > .d-flex:first-child {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .top-nav-inner > .d-flex:last-child {
+    width: 100%;
+    justify-content: center;
+    gap: 4px !important;
+  }
+
+  .nav-pill {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .hero-card {
+    padding: 26px 18px 20px;
+  }
+
+  .acceptance-badge {
+    margin-bottom: 15px;
+  }
+
+  .kicker {
+    font-size: 10px;
+    line-height: 1.45;
+    letter-spacing: 0.07em;
+    margin-bottom: 12px;
+  }
+
+  .display-title {
+    font-size: clamp(24px, 7.3vw, 30px);
+    line-height: 1.16;
+    letter-spacing: -0.036em;
+  }
+
+  .hero-subtitle {
+    margin-top: 13px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .hero-links {
+    margin-top: 17px;
+    gap: 7px;
+  }
+
+  .resource-chip {
+    font-size: 11px;
+    padding: 6px 9px;
+  }
+
+  .resource-chip.pending::after {
+    font-size: 9px;
+    padding: 3px 5px;
+  }
+
+  .metric-card {
+    padding: 11px 10px;
+  }
+
+  .metric-value {
+    font-size: 28px;
+  }
+
+  .metric-label,
+  .metric-note {
+    font-size: 11px;
+  }
+}
+
 /* Opening explanation should read as a concept ladder, not three parallel jargon cards. */
 .lead-figure .figure-kv {
   grid-template-columns: 1fr;
