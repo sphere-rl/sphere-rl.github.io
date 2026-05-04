@@ -227,28 +227,30 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.btn.hero-cta,
 .btn.control-primary {
-  border-color: rgba(49, 88, 212, 0.86);
-  background: linear-gradient(180deg, #3d66e3, #244abe);
-  box-shadow: 0 14px 26px rgba(49, 88, 212, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  border: 0;
+  background: linear-gradient(135deg, var(--paper-blue), var(--paper-purple));
+  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);
 }
 
-.btn.hero-cta:hover,
 .btn.control-primary:hover {
   border-color: rgba(38, 72, 193, 0.92);
-  background: linear-gradient(180deg, #416bea, #244abe);
+  background: linear-gradient(135deg, #3158d4, #6d28d9);
   transform: translateY(-1px);
 }
 
-.btn.hero-secondary,
 .btn.control-secondary {
-  background: rgba(255, 255, 255, 0.62);
-  border-color: rgba(49, 88, 212, 0.20);
-  color: rgba(48, 61, 82, 0.78);
+  color: rgba(51, 65, 85, 0.86);
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(226, 232, 240, 0.95);
 }
 
-.hero-links .btn,
+.btn.control-secondary:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow: var(--shadow-sm);
+}
+
 .task-controls .btn {
   border-radius: 999px;
   padding-inline: 13px;
@@ -399,14 +401,6 @@ a:hover {
   margin: 8px 0 10px 0;
 }
 
-.equation-box {
-  border: 1px dashed rgba(15, 23, 42, 0.15);
-  border-radius: 15px;
-  padding: 10px 12px;
-  background: rgba(15, 23, 42, 0.03);
-  overflow-x: auto;
-}
-
 .pill-hint {
   font-size: 12px;
   padding: 6px 11px;
@@ -490,15 +484,6 @@ a:hover {
 .task-name {
   font-weight: 720;
   color: rgba(15, 23, 42, 0.90);
-}
-
-.task-sep {
-  opacity: 0.5;
-}
-
-.task-meta {
-  color: rgba(51, 65, 85, 0.88);
-  font-size: 13px;
 }
 
 .viz-body {
@@ -620,74 +605,6 @@ a:hover {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(15, 23, 42, 0.14);
   color: rgba(15, 23, 42, 0.86);
-}
-
-.mini-title {
-  font-size: 13px;
-  color: rgba(15, 23, 42, 0.82);
-  margin-bottom: 10px;
-}
-
-.rank-plot {
-  width: 100%;
-  height: 140px;
-  display: block;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(15, 23, 42, 0.10);
-}
-
-.numbers {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.num-row {
-  display: grid;
-  grid-template-columns: 14px 1fr auto;
-  gap: 8px;
-  align-items: center;
-  color: rgba(15, 23, 42, 0.80);
-  font-size: 13px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot.baseline {
-  background: var(--baseline);
-}
-
-.dot.sphere {
-  background: var(--sphere);
-}
-
-.mini-note {
-  margin-top: 10px;
-  color: rgba(71, 85, 105, 0.84);
-  font-size: 12px;
-}
-
-.legend {
-  font-weight: 700;
-}
-
-.legend.pick {
-  color: #60a5fa;
-}
-
-.legend.push {
-  color: #cbd5e1;
-}
-
-.legend.close {
-  color: #fbbf24;
 }
 
 .figure-card {
@@ -864,7 +781,7 @@ code {
   }
 }
 
-/* Reference-inspired academic project page refinement (from local project_web.zip). */
+/* Reference-inspired academic project page refinement from the local comparison page. */
 :root {
   --paper-blue: #2563eb;
   --paper-blue-dark: #1d4ed8;
@@ -944,34 +861,6 @@ code {
   justify-content: center;
 }
 
-.btn.hero-cta,
-.btn.control-primary {
-  border: 0;
-  background: linear-gradient(135deg, var(--paper-blue), var(--paper-purple));
-  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);
-}
-
-.btn.hero-cta.disabled,
-.btn.hero-cta:disabled {
-  background: #111827;
-  opacity: 0.82;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
-}
-
-.btn.hero-secondary,
-.btn.control-secondary {
-  color: rgba(51, 65, 85, 0.86);
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(226, 232, 240, 0.95);
-}
-
-.btn.hero-secondary:hover,
-.btn.control-secondary:hover {
-  transform: translateY(-2px);
-  border-color: rgba(37, 99, 235, 0.28);
-  box-shadow: var(--shadow-sm);
-}
-
 .hero-metrics {
   max-width: 760px;
   margin: 2px auto 0;
@@ -988,9 +877,9 @@ code {
   text-align: center;
 }
 
+
 .metric-card,
-.tldr-item,
-.method-pill {
+.tldr-item {
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--paper-line);
   border-radius: 16px;
@@ -1560,7 +1449,7 @@ code {
   .tldr-item:hover,
   .figure-card:hover,
   .nav-pill:hover,
-  .btn.hero-secondary:hover,
+  .btn.control-primary:hover,
   .btn.control-secondary:hover {
     transform: none;
   }
