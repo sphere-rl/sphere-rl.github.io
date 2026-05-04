@@ -250,9 +250,9 @@
           <div class="section-heading-row figures-heading">
             <div>
               <h2 class="section-title">Experiments &amp; Analysis</h2>
-              <p class="section-text mb-0">Quantitative results, spectral diagnostics, and qualitative feature-space analyses connect continual-control failure, spectral collapse, and SPHERE’s regularization target.</p>
+              <p class="section-text mb-0">Quantitative results, ablations, spectral diagnostics, and qualitative feature-space analyses connect continual-control failure, spectral collapse, and SPHERE’s regularization target.</p>
             </div>
-            <span class="pill-hint">Results · Diagnostics · Cases</span>
+            <span class="pill-hint">Results · Ablations · Diagnostics · Cases</span>
           </div>
           <div class="figure-story">
             <article class="story-step">
@@ -292,6 +292,61 @@
             <article class="story-step">
               <div class="story-step-index">03</div>
               <div class="story-step-body">
+                <div class="subsection-title">Ablation: What Matters in SPHERE?</div>
+                <div class="ablation-stack">
+                  <div class="figure-card ablation-table-card">
+                    <div class="figure-title">HumanoidBench CRL design ablation</div>
+                    <table class="ablation-table" aria-label="SPHERE design ablation on HumanoidBench under continual reinforcement learning">
+                      <thead>
+                        <tr>
+                          <th>Variant</th>
+                          <th>Average success</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>w/o SPHERE</td>
+                          <td>0.36 ± 0.08</td>
+                        </tr>
+                        <tr class="best-row">
+                          <td>w/ SPHERE</td>
+                          <td>0.54 ± 0.12</td>
+                        </tr>
+                        <tr>
+                          <td>All hidden expert layers</td>
+                          <td>0.42 ± 0.07</td>
+                        </tr>
+                        <tr>
+                          <td>Per-expert loss sum</td>
+                          <td>0.40 ± 0.08</td>
+                        </tr>
+                        <tr>
+                          <td>Gradient-Gram regularization</td>
+                          <td>0.43 ± 0.09</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="figure-caption">
+                      The default last-layer, routing-weighted cross-expert feature Gram is the strongest tested design; alternatives help, but none matches the full SPHERE setup.
+                    </div>
+                  </div>
+                  <div class="figure-card ablation-figure">
+                    <img
+                      class="img-fluid rounded"
+                      src="figures_sphere/humanoidbench_sphere_rho_sweep.png"
+                      alt="HumanoidBench ablation sweep over the SPHERE ratio hyperparameter"
+                    />
+                    <div class="figure-caption">
+                      The ratio sweep shows the regularizer is not a one-point trick: enabling SPHERE ($\rho>0$) consistently improves average success over $\rho=0$, with a broad optimum around $\rho=10^{-3}$.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">04</div>
+              <div class="story-step-body">
                 <div class="subsection-title">Generalization Across Architectures</div>
                 <div class="figure-card">
                   <img
@@ -305,7 +360,7 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">04</div>
+              <div class="story-step-index">05</div>
               <div class="story-step-body">
                 <div class="subsection-title">Spectral Diagnostic: SPHERE Preserves $r_e(\mathbf{K})$</div>
                 <div class="figure-card">
@@ -316,7 +371,7 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">05</div>
+              <div class="story-step-index">06</div>
               <div class="story-step-body">
                 <div class="subsection-title">Mechanism: Weighted Expert Features Track $r_e(\mathbf{K})$</div>
                 <div class="figure-card compact-figure">
@@ -333,7 +388,7 @@
             </article>
 
             <article class="story-step">
-              <div class="story-step-index">06</div>
+              <div class="story-step-index">07</div>
               <div class="story-step-body">
                 <div class="subsection-title">Feature-Space Qualitative Analysis</div>
                 <div class="figure-card">

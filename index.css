@@ -1250,6 +1250,65 @@ code {
   margin-right: auto;
 }
 
+.ablation-figure {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ablation-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.ablation-table-card {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ablation-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.72);
+  color: rgba(30, 41, 59, 0.88);
+  font-size: 13px;
+}
+
+.ablation-table th,
+.ablation-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.07);
+}
+
+.ablation-table th {
+  color: rgba(71, 85, 105, 0.74);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 820;
+  background: rgba(241, 245, 249, 0.82);
+}
+
+.ablation-table td:last-child,
+.ablation-table th:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ablation-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.ablation-table .best-row td {
+  color: #1d4ed8;
+  font-weight: 820;
+  background: linear-gradient(90deg, rgba(239, 246, 255, 0.90), rgba(245, 243, 255, 0.68));
+}
+
 @media (max-width: 720px) {
   .story-step {
     grid-template-columns: 1fr;
