@@ -1139,7 +1139,7 @@ code {
 
 @media (max-width: 900px) {
   .display-title {
-    font-size: clamp(32px, 7.2vw, 48px);
+    font-size: clamp(30px, 6.6vw, 42px);
   }
 
   .hero-metrics {
@@ -1153,7 +1153,7 @@ code {
   }
 
   .display-title {
-    font-size: clamp(28px, 9.2vw, 36px);
+    font-size: clamp(26px, 8.4vw, 34px);
   }
 
   .section-card {
@@ -1205,6 +1205,67 @@ code {
   .acceptance-badge {
     padding: 9px 14px;
     font-size: 13px;
+  }
+}
+
+
+/* Keep unavailable resources visible but not styled as active calls-to-action. */
+.display-title {
+  font-size: clamp(32px, 3.85vw, 48px);
+  line-height: 1.14;
+}
+
+.hero-links {
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 660;
+  color: rgba(71, 85, 105, 0.78);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(226, 232, 240, 0.98);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+}
+
+.resource-chip.primary {
+  color: rgba(30, 41, 59, 0.84);
+  background: rgba(248, 250, 252, 0.94);
+  border-color: rgba(203, 213, 225, 0.92);
+}
+
+.resource-chip.pending::after {
+  content: "pending";
+  font-size: 10px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 999px;
+  color: rgba(100, 116, 139, 0.86);
+  background: rgba(241, 245, 249, 0.96);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+@media (max-width: 900px) {
+  .display-title {
+    font-size: clamp(30px, 6.6vw, 42px);
+  }
+}
+
+@media (max-width: 620px) {
+  .display-title {
+    font-size: clamp(26px, 8.4vw, 34px);
+  }
+
+  .resource-chip {
+    font-size: 12px;
+    padding: 7px 10px;
   }
 }
 
