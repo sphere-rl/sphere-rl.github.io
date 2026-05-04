@@ -1212,7 +1212,7 @@ code {
 
 .story-step {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 112px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -1223,7 +1223,7 @@ code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 76px;
+  min-width: 94px;
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;

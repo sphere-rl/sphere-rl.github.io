@@ -250,15 +250,43 @@
           <div class="section-heading-row figures-heading">
             <div>
               <h2 class="section-title">Experiments &amp; Analysis</h2>
-              <p class="section-text mb-0">Quantitative results, ablations, spectral diagnostics, and qualitative feature-space analyses connect continual-control failure, spectral collapse, and SPHERE’s regularization target.</p>
+              <p class="section-text mb-0">The story follows the paper: first show the continual-RL failure mode, then diagnose spectral collapse, then present SPHERE’s results and supporting analyses.</p>
             </div>
-            <span class="pill-hint">Results · Ablations · Diagnostics · Cases</span>
+            <span class="pill-hint">Phenomenon · Diagnosis · Results · Ablations</span>
           </div>
           <div class="figure-story">
             <article class="story-step">
+              <div class="story-step-index">Phenomenon</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Phenomenon: Continual RL Degrades Across Architectures</div>
+                <div class="figure-card">
+                  <img
+                    class="img-fluid rounded"
+                    src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
+                    alt="HumanoidBench success: RL vs CRL"
+                  />
+                  <div class="figure-caption">
+                    Before introducing SPHERE, the same HumanoidBench architectures lose success under continual RL (CRL) compared to per-task RL.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">Diagnosis</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Diagnosis: Spectral Plasticity Collapses During CRL</div>
+                <div class="figure-card">
+                  <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
+                  <div class="figure-caption">The performance drop is accompanied by lower $r_e(\mathbf{K})$: baselines lose spectral plasticity, while SPHERE keeps the update geometry better conditioned.</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-step">
               <div class="story-step-index">Result</div>
               <div class="story-step-body">
-                <div class="subsection-title">Main Result: SPHERE Narrows the Continual-RL Gap</div>
+                <div class="subsection-title">Result: SPHERE Narrows the Continual-RL Gap on MetaWorld</div>
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
@@ -275,7 +303,7 @@
             <article class="story-step">
               <div class="story-step-index">Result</div>
               <div class="story-step-body">
-                <div class="subsection-title">Main Result on HumanoidBench</div>
+                <div class="subsection-title">Result: SPHERE Also Improves HumanoidBench</div>
                 <div class="figure-card performance-figure">
                   <img
                     class="img-fluid rounded"
@@ -330,32 +358,6 @@
                       The default last-layer, routing-weighted cross-expert feature Gram is the strongest tested design; alternatives help, but none matches the full SPHERE setup.
                     </div>
                   </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="story-step">
-              <div class="story-step-index">Scope</div>
-              <div class="story-step-body">
-                <div class="subsection-title">Generalization Across Architectures</div>
-                <div class="figure-card">
-                  <img
-                    class="img-fluid rounded"
-                    src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
-                    alt="HumanoidBench success: RL vs CRL"
-                  />
-                  <div class="figure-caption">Across architectures, performance degrades under continual RL (CRL) compared to per-task RL.</div>
-                </div>
-              </div>
-            </article>
-
-            <article class="story-step">
-              <div class="story-step-index">Diagnostic</div>
-              <div class="story-step-body">
-                <div class="subsection-title">Spectral Diagnostic: SPHERE Preserves $r_e(\mathbf{K})$</div>
-                <div class="figure-card">
-                  <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
-                  <div class="figure-caption">During CRL, $r_e(\mathbf{K})$ drops across baselines; SPHERE maintains higher spectral plasticity.</div>
                 </div>
               </div>
             </article>
