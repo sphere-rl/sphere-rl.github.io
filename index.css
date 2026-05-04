@@ -1212,7 +1212,7 @@ code {
 
 .story-step {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-columns: 92px minmax(0, 1fr);
   gap: 18px;
   align-items: start;
 }
@@ -1223,17 +1223,18 @@ code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  min-width: 76px;
+  min-height: 34px;
+  padding: 0 12px;
   border-radius: 999px;
   color: #1d4ed8;
   background: linear-gradient(135deg, rgba(239, 246, 255, 0.96), rgba(245, 243, 255, 0.92));
-  border: 1px solid rgba(37, 99, 235, 0.16);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
   font-family: Inter, "Google Sans", "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 850;
-  letter-spacing: 0.06em;
+  font-size: 11px;
+  font-weight: 820;
+  letter-spacing: 0.035em;
 }
 
 .story-step-body {
@@ -1306,8 +1307,8 @@ code {
 
   .story-step-index {
     position: static;
-    width: auto;
-    height: auto;
+    min-width: auto;
+    min-height: auto;
     padding: 7px 11px;
     justify-self: start;
   }
