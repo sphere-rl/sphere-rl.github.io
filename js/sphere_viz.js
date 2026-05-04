@@ -570,13 +570,12 @@
     const meshToggle = document.getElementById("meshToggle");
     const taskIdxBadge = document.getElementById("taskIdxBadge");
     const taskName = document.getElementById("taskName");
-    const knobEl = document.getElementById("taskKnob");
     const fallback = document.getElementById("vizFallback");
 
     const sphereCanvas = document.getElementById("sphereCanvas");
 
     if (!taskSlider || !playBtn || !resetBtn || !taskIdxBadge || !taskName) return;
-    if (!sphereCanvas || !knobEl) return;
+    if (!sphereCanvas) return;
 
     const viz3d = setup3D(sphereCanvas);
     if (!viz3d.ok) {
@@ -645,28 +644,19 @@
       return 1 - Math.pow(1 - x, 3);
     }
 
-    const knob = new window.TaskKnob(knobEl, {
-      min: 0,
-      max: preset.tasks.length - 1,
-      step: 1,
-      value: idx,
-      onChange: (v) => setTask(v, { from: "knob" }),
-    });
-
     taskSlider.min = "0";
     taskSlider.max = String(Math.max(0, preset.tasks.length - 1));
     taskSlider.step = "1";
     taskSlider.value = String(idx);
 
     function setTask(nextIdx, { from } = {}) {
+      void from;
       idx = clamp(nextIdx, 0, preset.tasks.length - 1);
       taskSlider.value = String(idx);
-      if (from !== "knob") knob.setValue(idx, false);
 
       taskIdxBadge.textContent = `Task ${idx + 1}`;
       taskName.textContent = preset.tasks[idx] ?? `Task ${idx + 1}`;
       const taskText = `${taskIdxBadge.textContent}: ${taskName.textContent}`;
-      knobEl.setAttribute("aria-valuetext", taskText);
       taskSlider.setAttribute("aria-valuetext", taskText);
 
       const p = preset.tasks.length <= 1 ? 0 : idx / (preset.tasks.length - 1);
@@ -803,8 +793,6 @@
     });
 
     // Initial paint
-    knob.setRange(0, Math.max(0, preset.tasks.length - 1));
-    knob.setValue(defaultIdx, false);
     setTask(defaultIdx, { from: "init" });
   }
 

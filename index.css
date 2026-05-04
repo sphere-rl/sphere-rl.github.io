@@ -452,14 +452,14 @@ a:hover {
 
 .task-controls {
   display: flex;
-  gap: 12px;
+  gap: 13px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .task-slider {
-  width: min(440px, 100%);
-  min-width: 240px;
+  flex: 1 1 520px;
+  min-width: 360px;
   accent-color: var(--accent);
 }
 
@@ -689,47 +689,6 @@ a:hover {
   opacity: 0.78;
 }
 
-/* --- Knob widget --- */
-.task-knob {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid rgba(30, 41, 59, 0.12);
-  background:
-    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.56) 42%, rgba(49, 88, 212, 0.10)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(230, 236, 247, 0.82));
-  position: relative;
-  user-select: none;
-  touch-action: none;
-  cursor: grab;
-  box-shadow: 0 10px 24px rgba(31, 41, 55, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.82);
-}
-
-.task-knob:active {
-  cursor: grabbing;
-}
-
-.task-knob::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 2px;
-  height: 19px;
-  background: rgba(15, 23, 42, 0.88);
-  transform-origin: 50% calc(100% - 2px);
-  transform: translate(-50%, -100%) rotate(var(--knob-angle, -135deg));
-  border-radius: 999px;
-}
-
-.task-knob::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  border: 1px solid rgba(15, 23, 42, 0.075);
-}
-
 code {
   color: rgba(15, 23, 42, 0.86);
   background: rgba(15, 23, 42, 0.04);
@@ -770,10 +729,6 @@ code {
 
   .hero-metrics {
     grid-template-columns: 1fr;
-  }
-
-  .task-slider {
-    min-width: 180px;
   }
 
   .viz-canvas {
@@ -1216,6 +1171,17 @@ a.resource-chip:hover {
   }
 }
 
+@media (max-width: 760px) {
+  .task-controls {
+    flex-wrap: wrap;
+  }
+
+  .task-slider {
+    flex-basis: 100%;
+    min-width: 180px;
+  }
+}
+
 /* Sequential experiment story: one result at a time. */
 .figure-story {
   display: grid;
@@ -1444,7 +1410,6 @@ a.resource-chip:hover {
 /* Accessibility and motion polish. */
 .nav-pill:focus-visible,
 .hero-authors a:focus-visible,
-.task-knob:focus-visible,
 .btn:focus-visible,
 .form-check-input:focus-visible,
 .form-range:focus-visible {

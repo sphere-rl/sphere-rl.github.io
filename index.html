@@ -64,7 +64,6 @@
     </script>
 
     <!-- Page logic -->
-    <script defer src="js/task_knob.js"></script>
     <script defer src="js/sphere_viz.js"></script>
 
     <!-- MathJax (optional, for equations) -->
@@ -214,7 +213,7 @@
 
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
             <h2 class="section-title mb-0">Update Geometry: Collapse vs. SPHERE</h2>
-            <div class="pill-hint">Drag the knob · or use the slider · or press Play</div>
+            <div class="pill-hint">Use the slider · or press Play</div>
           </div>
 
           <p class="section-text">
@@ -232,7 +231,6 @@
               <div class="control control-grow">
                 <div class="control-label">Task</div>
                 <div class="task-controls">
-                  <div id="taskKnob" class="task-knob" aria-label="Rotary task selector"></div>
                   <input id="taskSlider" class="form-range task-slider" type="range" min="0" max="5" value="0" step="1" aria-label="Linear task selector" />
                   <button id="playBtn" class="btn btn-sm btn-primary control-primary" type="button" aria-pressed="false">Play</button>
                   <button id="resetBtn" class="btn btn-sm btn-outline-secondary control-secondary" type="button">Reset</button>
