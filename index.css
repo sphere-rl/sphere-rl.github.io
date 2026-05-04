@@ -1202,3 +1202,65 @@ code {
     font-size: 13px;
   }
 }
+
+/* Sequential experiment story: one result at a time. */
+.figure-story {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.story-step {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.story-step-index {
+  position: sticky;
+  top: 86px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  color: #1d4ed8;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.96), rgba(245, 243, 255, 0.92));
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  font-family: Inter, "Google Sans", "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+}
+
+.story-step-body {
+  min-width: 0;
+}
+
+.performance-figure img {
+  width: 100%;
+}
+
+.compact-figure {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 720px) {
+  .story-step {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .story-step-index {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 7px 11px;
+    justify-self: start;
+  }
+}

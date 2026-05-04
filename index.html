@@ -254,49 +254,82 @@
             </div>
             <span class="pill-hint">Results · Diagnostics · Cases</span>
           </div>
-          <div class="row g-3">
-            <div class="col-12 col-lg-6">
-              <div class="subsection-title">Continual RL Reveals Performance and Spectral Collapse</div>
-              <div class="figure-card">
-                <img
-                  class="img-fluid rounded"
-                  src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
-                  alt="HumanoidBench success: RL vs CRL"
-                />
-                <div class="figure-caption">Across architectures, performance degrades under continual RL (CRL) compared to per-task RL.</div>
-              </div>
-              <div class="figure-card mt-3">
-                <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
-                <div class="figure-caption">During CRL, $r_e(\mathbf{K})$ drops across baselines; SPHERE maintains higher spectral plasticity.</div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6">
-              <div class="subsection-title">Mechanism: Weighted Expert Features Track $r_e(\mathbf{K})$</div>
-              <div class="figure-card">
-                <img
-                  class="img-fluid rounded"
-                  src="figures_sphere/reA_reK_batch_scatter_h1_run.png"
-                  alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
-                />
-                <div class="figure-caption">
-                  Effective rank of the weighted expert feature Gram correlates with effective rank of the eNTK, motivating feature-Gram regularization.
+          <div class="figure-story">
+            <article class="story-step">
+              <div class="story-step-index">01</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Main Result: SPHERE Narrows the Continual-RL Gap</div>
+                <div class="figure-card performance-figure">
+                  <img
+                    class="img-fluid rounded"
+                    src="figures_sphere/metaworld_methods_success_rl_vs_crl_bars_trim.png"
+                    alt="MetaWorld success rate across methods under RL and CRL"
+                  />
+                  <div class="figure-caption">
+                    On MetaWorld, the CRL success-rate drop is severe across baselines, while SPHERE retains the strongest continual-control performance.
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row g-3 mt-0">
-            <div class="col-12">
-              <div class="subsection-title">Feature-Space Qualitative Analysis</div>
-              <div class="figure-card">
-                <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" />
-                <div class="figure-caption">
-                  Qualitative analysis. Using a fixed held-out batch of states from a Stair-task replay buffer, we run t-SNE on last-layer
-                  gating-weighted expert features from checkpoints after each task. Each point is colored by the dominant singular-direction index of
-                  the weighted feature matrix (largest squared projection). Without SPHERE, points quickly concentrate on a single dominant component;
-                  with SPHERE, multiple components remain active throughout the sequence.
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">02</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Generalization Across Architectures</div>
+                <div class="figure-card">
+                  <img
+                    class="img-fluid rounded"
+                    src="figures_sphere/humanoidbench_archs_success_rl_vs_crl_bars_relu.png"
+                    alt="HumanoidBench success: RL vs CRL"
+                  />
+                  <div class="figure-caption">Across architectures, performance degrades under continual RL (CRL) compared to per-task RL.</div>
                 </div>
               </div>
-            </div>
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">03</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Spectral Diagnostic: SPHERE Preserves $r_e(\mathbf{K})$</div>
+                <div class="figure-card">
+                  <img class="img-fluid rounded" src="figures_sphere/humanoidbench_entk_erank_combined.png" alt="Effective rank during training" />
+                  <div class="figure-caption">During CRL, $r_e(\mathbf{K})$ drops across baselines; SPHERE maintains higher spectral plasticity.</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">04</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Mechanism: Weighted Expert Features Track $r_e(\mathbf{K})$</div>
+                <div class="figure-card compact-figure">
+                  <img
+                    class="img-fluid rounded"
+                    src="figures_sphere/reA_reK_batch_scatter_h1_run.png"
+                    alt="Scatter: effective rank of weighted expert feature Gram vs effective rank of eNTK"
+                  />
+                  <div class="figure-caption">
+                    Effective rank of the weighted expert feature Gram correlates with effective rank of the eNTK, motivating feature-Gram regularization.
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="story-step">
+              <div class="story-step-index">05</div>
+              <div class="story-step-body">
+                <div class="subsection-title">Feature-Space Qualitative Analysis</div>
+                <div class="figure-card">
+                  <img class="img-fluid rounded" src="figures_sphere/case.png" alt="Qualitative analysis: collapse vs SPHERE" />
+                  <div class="figure-caption">
+                    Qualitative analysis. Using a fixed held-out batch of states from a Stair-task replay buffer, we run t-SNE on last-layer
+                    gating-weighted expert features from checkpoints after each task. Each point is colored by the dominant singular-direction index of
+                    the weighted feature matrix (largest squared projection). Without SPHERE, points quickly concentrate on a single dominant component;
+                    with SPHERE, multiple components remain active throughout the sequence.
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
