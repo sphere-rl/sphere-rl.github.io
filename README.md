@@ -22,6 +22,8 @@ python -m http.server 8000 --directory .
 
 This repository is the static project page for the ICML 2026 accepted paper **SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning**.
 
+Public site: <https://sphere-rl.github.io/>
+
 The page is currently optimized for desktop / laptop reading, matching the expected paper-project-page audience. Mobile support should not drive layout decisions unless that requirement changes.
 
 

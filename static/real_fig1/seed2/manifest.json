@@ -1,0 +1,34 @@
+{
+  "files": {
+    "baseline": {
+      "h1_pole": "static/real_fig1/seed2/baseline__h1_pole__seed2.json",
+      "h1_run": "static/real_fig1/seed2/baseline__h1_run__seed2.json",
+      "h1_slide": "static/real_fig1/seed2/baseline__h1_slide__seed2.json",
+      "h1_stand": "static/real_fig1/seed2/baseline__h1_stand__seed2.json",
+      "h1_walk": "static/real_fig1/seed2/baseline__h1_walk__seed2.json"
+    },
+    "sphere": {
+      "h1_pole": "static/real_fig1/seed2/sphere__h1_pole__seed2.json",
+      "h1_run": "static/real_fig1/seed2/sphere__h1_run__seed2.json",
+      "h1_slide": "static/real_fig1/seed2/sphere__h1_slide__seed2.json",
+      "h1_stand": "static/real_fig1/seed2/sphere__h1_stand__seed2.json",
+      "h1_walk": "static/real_fig1/seed2/sphere__h1_walk__seed2.json"
+    },
+    "untrained": {
+      "h1_stand": "static/real_fig1/seed2/untrained__h1_stand__seed2.json"
+    }
+  },
+  "methods": [
+    "baseline",
+    "sphere",
+    "untrained"
+  ],
+  "seed": 2,
+  "tasks": [
+    "h1_stand",
+    "h1_walk",
+    "h1_pole",
+    "h1_slide",
+    "h1_run"
+  ]
+}
