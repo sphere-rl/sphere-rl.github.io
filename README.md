@@ -29,7 +29,7 @@ The page is currently optimized for desktop / laptop reading, matching the expec
 
 ## Publication boundary
 
-Camera-ready PDF and slides are intentionally shown as pending on the page until the final artifacts are ready. The public code link points to `https://github.com/sphere-rl/sphere`.
+Camera-ready PDF, slides, and poster are intentionally shown as pending on the page until the final artifacts are ready. The public code link points to `https://github.com/sphere-rl/sphere`.
 
 Do not commit unfinished camera-ready PDFs under this static site root; otherwise
 static hosting can expose them even without a visible link. Keep unpublished drafts
