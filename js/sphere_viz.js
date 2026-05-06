@@ -190,15 +190,8 @@
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     camera.position.set(0, 0.15, 10.2);
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.55);
-    scene.add(ambient);
-    const key = new THREE.DirectionalLight(0xffffff, 0.85);
-    key.position.set(4, 4, 6);
-    scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffffff, 0.35);
-    rim.position.set(-5, 2, -4);
-    scene.add(rim);
-
+    // Keep the interactive geometry flat and paper-like: no directional lighting,
+    // highlights, or specular shadows. MeshBasicMaterial below ignores scene lights.
     const geometry = new THREE.IcosahedronGeometry(0.72, 4);
 
     function _setArrowOpacity(arrow, opacity) {
@@ -248,12 +241,9 @@
       group.add(deformed);
 
       // Deformed: the "output" ellipsoid after applying an eNTK-like linear map.
-      const material = new THREE.MeshStandardMaterial({
+      const material = new THREE.MeshBasicMaterial({
         color: new THREE.Color(hexColor),
-        roughness: 0.35,
-        metalness: 0.15,
-        transparent: true,
-        opacity: 0.86,
+        side: THREE.DoubleSide,
       });
       const mesh = new THREE.Mesh(geometry, material);
       deformed.add(mesh);
@@ -280,7 +270,7 @@
         color: new THREE.Color(pointHexColor),
         size: 0.025,
         transparent: true,
-        opacity: 0.32,
+        opacity: 0.42,
       });
       const points = new THREE.Points(pointsGeom, pointsMat);
       deformed.add(points);
@@ -307,26 +297,20 @@
       group.add(componentClose);
 
       const markerGeom = new THREE.SphereGeometry(0.06, 16, 16);
-      const markerMat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(wireColor),
-        emissive: new THREE.Color(wireColor),
-        emissiveIntensity: 0.20,
-        roughness: 0.35,
-        metalness: 0.05,
+      const markerMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(wireSoftColor),
         transparent: true,
-        opacity: 0.92,
+        opacity: 0.78,
+        depthWrite: false,
       });
       const gradPoint = new THREE.Mesh(markerGeom, markerMat);
       group.add(gradPoint);
 
-      const inputPointMat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#e5e7eb"),
-        emissive: new THREE.Color("#e5e7eb"),
-        emissiveIntensity: 0.10,
-        roughness: 0.55,
-        metalness: 0.05,
+      const inputPointMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color("#f8fafc"),
         transparent: true,
-        opacity: 0.85,
+        opacity: 0.90,
+        side: THREE.DoubleSide,
       });
       const inputPoint = new THREE.Mesh(markerGeom, inputPointMat);
       inputPoint.visible = false;
@@ -549,13 +533,15 @@
       blob.wire.visible = true;
 
       // Stage styling hints.
-      blob.refWire.material.opacity = 0.10;
-      blob.wire.material.opacity = 0.14;
-      blob.mesh.material.opacity = 0.86;
-      _setArrowOpacity(blob.gradArrow, 0.62);
-      _setArrowOpacity(blob.componentPick, 0.72);
-      _setArrowOpacity(blob.componentPush, 0.58);
-      _setArrowOpacity(blob.componentClose, 0.72);
+      blob.refWire.material.opacity = 0.12;
+      blob.wire.material.opacity = 0.18;
+      // The shell color itself is light; keep it opaque so the geometry stays readable
+      // after removing directional lighting and specular highlights.
+      blob.mesh.material.opacity = 1.0;
+      _setArrowOpacity(blob.gradArrow, 0.56);
+      _setArrowOpacity(blob.componentPick, 0.62);
+      _setArrowOpacity(blob.componentPush, 0.48);
+      _setArrowOpacity(blob.componentClose, 0.62);
 
       blob.plane.visible = false;
     }
@@ -620,11 +606,11 @@
             blob.points.visible = true;
             const mat = blob.points.material;
             // When the mesh is hidden, make the point cloud easier to see.
-            mat.opacity = meshEnabled ? 0.32 : 0.62;
-            mat.size = meshEnabled ? 0.025 : 0.032;
+            mat.opacity = meshEnabled ? 0.42 : 0.58;
+            mat.size = meshEnabled ? 0.025 : 0.031;
           }
           if (blob.wire?.material) {
-            blob.wire.material.opacity = meshEnabled ? 0.14 : 0.10;
+            blob.wire.material.opacity = meshEnabled ? 0.18 : 0.12;
           }
         }
       }
@@ -692,8 +678,8 @@
         }
         applyMeshVisibility();
 
-        const baselineHex = hexColorLerp("#ef4444", "#b91c1c", p);
-        const sphereHex = hexColorLerp("#0ea5e9", "#0ea5e9", p);
+        const baselineHex = hexColorLerp("#ef4444", "#fb7185", p);
+        const sphereHex = hexColorLerp("#0ea5e9", "#38bdf8", p);
         for (let stage = 0; stage < viz3d.stageCount; stage++) {
           viz3d.baselineStages[stage].mesh.material.color = new THREE.Color(baselineHex);
           viz3d.sphereStages[stage].mesh.material.color = new THREE.Color(sphereHex);
