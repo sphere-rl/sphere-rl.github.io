@@ -1498,3 +1498,45 @@ a.resource-chip:hover {
     radial-gradient(900px 540px at 55% 76%, rgba(186, 230, 253, 0.045), transparent 64%),
     linear-gradient(180deg, rgba(253, 254, 255, 0.98), rgba(247, 250, 253, 0.94));
 }
+
+/* 2026-05 VLMgineer-inspired first-screen simplification: paper-title stack first, venue as a line. */
+.acceptance-badge {
+  display: none;
+}
+
+.venue-line {
+  margin-top: 10px;
+  color: rgba(30, 41, 59, 0.86);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.venue-line strong,
+.hero-authors .affiliations strong {
+  color: rgba(29, 78, 216, 0.98);
+  font-weight: 760;
+}
+
+.hero-title .hero-links {
+  margin-top: 16px;
+}
+
+/* 2026-05 first-screen content borrow: title/venue/resources followed by the paper overview figure, not result cards. */
+.hero-card {
+  padding-bottom: 30px;
+}
+
+.hero-visual {
+  max-width: 820px;
+  margin: 26px auto 0;
+}
+
+.hero-teaser-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(226, 232, 240, 0.96);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.075);
+}
