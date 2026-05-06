@@ -1467,3 +1467,32 @@ a.resource-chip:hover {
     transform: none;
   }
 }
+
+/* 2026-05 hero cleanup: keep the first screen focused on acceptance, title, authors, and resources. */
+.hero-card {
+  padding-top: 34px;
+}
+
+.hero-title .hero-authors {
+  margin-top: 9px;
+  padding-top: 0;
+  border-top: 0;
+  max-width: 860px;
+}
+
+.hero-title .hero-authors .authors {
+  justify-content: center;
+  row-gap: 4px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.hero-title .hero-authors .affiliations {
+  justify-content: center;
+  margin-top: 4px;
+  font-size: 12.5px;
+}
+
+.hero-title .hero-links {
+  margin-top: 18px;
+}
