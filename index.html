@@ -139,13 +139,6 @@
                   <span class="resource-state">pending</span>
                 </span>
               </div>
-
-              <div class="hero-visual" aria-label="SPHERE paper overview figure">
-                <picture>
-                  <source srcset="figures_sphere/teaser.webp" type="image/webp" />
-                  <img class="hero-teaser-img" src="figures_sphere/teaser.png" width="1737" height="1145" alt="Overview showing continual-RL plasticity loss, spectral collapse, and SPHERE regularization" fetchpriority="high" loading="eager" decoding="async" />
-                </picture>
-              </div>
             </div>
           </div>
 
@@ -188,6 +181,28 @@
               </p>
             </div>
             <span class="pill-hint">Phenomenon → spectral collapse → SPHERE</span>
+          </div>
+          <div class="figure-card lead-figure mb-3">
+            <div class="figure-lead">
+              <div class="figure-kv">
+                <div class="kv">
+                  <span class="kv-k">Phenomenon</span>
+                  <span class="kv-v">In continual RL, policies keep receiving new experience but can stop changing effectively.</span>
+                </div>
+                <div class="kv">
+                  <span class="kv-k">Diagnosis</span>
+                  <span class="kv-v">The update geometry loses rank, meaning learning concentrates into too few functional directions.</span>
+                </div>
+                <div class="kv">
+                  <span class="kv-k">SPHERE</span>
+                  <span class="kv-v">SPHERE keeps the weighted expert-feature Gram more isotropic, which helps preserve diverse update directions.</span>
+                </div>
+              </div>
+            </div>
+            <picture>
+              <source srcset="figures_sphere/teaser.webp" type="image/webp" />
+              <img class="img-fluid rounded" src="figures_sphere/teaser.png" width="1737" height="1145" alt="Overview showing continual-RL plasticity loss, spectral collapse, and SPHERE regularization" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
             <h3 class="viz-subsection-title mb-0">Update Geometry: Collapse vs. SPHERE</h3>

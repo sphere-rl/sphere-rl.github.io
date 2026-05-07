@@ -1520,23 +1520,3 @@ a.resource-chip:hover {
 .hero-title .hero-links {
   margin-top: 16px;
 }
-
-/* 2026-05 first-screen content borrow: title/venue/resources followed by the paper overview figure, not result cards. */
-.hero-card {
-  padding-bottom: 30px;
-}
-
-.hero-visual {
-  max-width: 820px;
-  margin: 26px auto 0;
-}
-
-.hero-teaser-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 18px;
-  border: 1px solid rgba(226, 232, 240, 0.96);
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.075);
-}
