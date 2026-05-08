@@ -29,7 +29,9 @@ The page is currently optimized for desktop / laptop reading, matching the expec
 
 ## Publication boundary
 
-The arXiv/paper link and poster are intentionally shown as pending on the page until the final artifacts are ready. The public code link points to `https://github.com/sphere-rl/sphere`; the slides link points to Google Slides.
+The project page now exposes the public paper surfaces directly: arXiv `https://arxiv.org/abs/2605.04712`, code `https://github.com/sphere-rl/sphere`, Google Slides, and the tracked ICML 2026 poster PDF at `static/sphere-icml2026-poster.pdf`.
+
+If arXiv replacement processing is in progress, the public arXiv source/PDF may temporarily lag behind the submitted replacement even though the project page link is already stable.
 
 Do not commit unfinished camera-ready PDFs or local preprint drafts under this static site root; otherwise
 static hosting can expose them even without a visible link. Keep unpublished drafts

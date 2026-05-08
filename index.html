@@ -40,6 +40,8 @@
     <meta name="citation_author" content="Li, Qing" />
     <meta name="citation_conference_title" content="International Conference on Machine Learning" />
     <meta name="citation_publication_date" content="2026" />
+    <meta name="citation_arxiv_id" content="2605.04712" />
+    <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2605.04712" />
 
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -121,9 +123,9 @@
               </div>
 
               <div class="hero-links">
-                <a class="resource-chip" href="https://arxiv.org/abs/2605.04712" target="_blank" rel="noopener noreferrer" aria-label="SPHERE arXiv paper">
+                <a class="resource-chip" href="https://arxiv.org/abs/2605.04712" target="_blank" rel="noopener noreferrer" aria-label="SPHERE paper on arXiv">
                   <span class="resource-icon" aria-hidden="true">arXiv</span>
-                  <span>arXiv</span>
+                  <span>Paper</span>
                 </a>
                 <a class="resource-chip primary" href="https://github.com/sphere-rl/sphere" target="_blank" rel="noopener noreferrer" aria-label="SPHERE GitHub code repository">
                   <span class="resource-icon" aria-hidden="true">&lt;/&gt;</span>
@@ -150,7 +152,7 @@
             <div>
               <h2 class="section-title">TL;DR</h2>
               <p class="section-text mb-0">
-                SPHERE studies why MoE policies lose their ability to adapt in continual RL. It shows that learning updates collapse into too few directions, then keeps expert features diverse so later tasks remain learnable.
+                SPHERE studies why Mixture-of-Experts (MoE) policies lose their ability to adapt in continual RL. It shows that learning updates collapse into too few directions, then keeps expert features diverse so later tasks remain learnable.
               </p>
             </div>
             <span class="pill-hint">Phenomenon → diagnosis → regularization</span>
@@ -210,7 +212,7 @@
 
           <p class="section-text">
             The visualization makes the diagnosis concrete. A unit sphere of possible gradient directions becomes an ellipsoid after multiplication by the
-            eNTK matrix $\mathbf{K}$. When $\mathbf{K}$ becomes low-rank, one axis shrinks toward zero and the ellipsoid degenerates
+            empirical neural tangent kernel (eNTK) matrix $\mathbf{K}$. When $\mathbf{K}$ becomes low-rank, one axis shrinks toward zero and the ellipsoid degenerates
             toward a near-plane or line; SPHERE keeps the spectrum more isotropic.
           </p>
           <p class="section-text">
@@ -269,8 +271,8 @@
             </div>
           </div>
           <p class="section-text mt-3">
-            This animation is grounded in real Fig. 1 exports: the top-3 eigenvalues of $\mathbf{K}$ shape the ellipsoid for each task, and
-            gradient-direction samples are projected into the same 3D subspace.
+            This animation uses the top-3 eigenvalues of $\mathbf{K}$ from the HumanoidBench Fig. 1 data to shape each task's ellipsoid, with
+            gradient-direction samples projected into the same 3D subspace.
           </p>
         </section>
 
@@ -280,7 +282,7 @@
               <h2 class="section-title">Experiments &amp; Analysis</h2>
               <p class="section-text mb-0">These panels show where continual training fails, how the update geometry collapses, how SPHERE improves performance on two control benchmarks, and which design choices matter.</p>
             </div>
-            <span class="pill-hint">Phenomenon · Diagnosis · Performance · Design · Feature Proxy</span>
+            <span class="pill-hint">Phenomenon · Diagnosis · Performance · Design · Feature Evidence</span>
           </div>
           <div class="figure-story">
             <article class="story-step">
@@ -348,7 +350,7 @@
                 <div class="subsection-title">What Matters in SPHERE?</div>
                 <div class="ablation-stack">
                   <div class="figure-card ablation-table-card">
-                    <div class="figure-title">HumanoidBench CRL design ablation</div>
+                    <div class="figure-title">HumanoidBench continual-RL design ablation</div>
                     <table class="ablation-table" aria-label="SPHERE design ablation on HumanoidBench under continual reinforcement learning">
                       <thead>
                         <tr>
@@ -358,11 +360,11 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>w/o SPHERE</td>
+                          <td>Without SPHERE</td>
                           <td>0.36 ± 0.08</td>
                         </tr>
                         <tr class="best-row">
-                          <td>w/ SPHERE</td>
+                          <td>With SPHERE</td>
                           <td>0.54 ± 0.12</td>
                         </tr>
                         <tr>
@@ -403,7 +405,7 @@
               </div>
             </article>
             <article class="story-step">
-              <div class="story-step-index">Feature Proxy</div>
+              <div class="story-step-index">Feature Evidence</div>
               <div class="story-step-body">
                 <div class="subsection-title">Weighted Expert Features Track the eNTK Rank</div>
                 <div class="figure-card compact-figure">

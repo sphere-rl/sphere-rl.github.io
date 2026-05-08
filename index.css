@@ -1092,7 +1092,7 @@ code {
 }
 
 
-/* Keep unavailable resources visible but not styled as active calls-to-action. */
+/* Resource buttons and publication links. */
 .display-title {
   font-size: clamp(31px, 3.55vw, 44px);
   line-height: 1.15;
@@ -1126,13 +1126,6 @@ a.resource-chip:hover {
   transform: translateY(-1px);
 }
 
-.resource-chip.pending {
-  color: rgba(71, 85, 105, 0.78);
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(226, 232, 240, 0.98);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
-}
-
 .resource-chip.primary {
   color: #ffffff;
   background: linear-gradient(135deg, var(--paper-blue), var(--paper-purple));
@@ -1158,16 +1151,6 @@ a.resource-chip:hover {
   color: #1d4ed8;
   background: rgba(255, 255, 255, 0.92);
   border-color: rgba(255, 255, 255, 0.60);
-}
-
-.resource-state {
-  font-size: 10px;
-  line-height: 1;
-  padding: 4px 6px;
-  border-radius: 999px;
-  color: rgba(100, 116, 139, 0.86);
-  background: rgba(241, 245, 249, 0.96);
-  border: 1px solid rgba(226, 232, 240, 0.95);
 }
 
 @media (max-width: 900px) {
@@ -1364,11 +1347,6 @@ a.resource-chip:hover {
   .resource-chip {
     font-size: 11px;
     padding: 6px 9px;
-  }
-
-  .resource-state {
-    font-size: 9px;
-    padding: 3px 5px;
   }
 
   .resource-icon {
