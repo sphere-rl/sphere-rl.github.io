@@ -67,12 +67,6 @@
 
     <!-- Page logic -->
     <script defer src="js/sphere_viz.js?v=20260506-3d-soften"></script>
-
-    <!-- MathJax (optional, for equations) -->
-    <script>
-      window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]] } };
-    </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
 
   <body>
@@ -212,12 +206,12 @@
 
           <p class="section-text">
             The visualization makes the diagnosis concrete. A unit sphere of possible gradient directions becomes an ellipsoid after multiplication by the
-            empirical neural tangent kernel (eNTK) matrix $\mathbf{K}$. When $\mathbf{K}$ becomes low-rank, one axis shrinks toward zero and the ellipsoid degenerates
+            empirical neural tangent kernel (eNTK) matrix <span class="math-inline-soft">K</span>. When <span class="math-inline-soft">K</span> becomes low-rank, one axis shrinks toward zero and the ellipsoid degenerates
             toward a near-plane or line; SPHERE keeps the spectrum more isotropic.
           </p>
           <p class="section-text">
-            Top row (<span class="math-inline-soft">$\nabla_f L$</span>) shows the input sphere of directions; bottom row
-            (<span class="math-inline-soft">$\mathbf{K}\nabla_f L$</span>) shows the stretching process.
+            Top row (<span class="math-inline-soft">∇fL</span>) shows the input sphere of directions; bottom row
+            (<span class="math-inline-soft">K∇fL</span>) shows the stretching process.
           </p>
 
           <div class="viz-card" id="vizRoot">
@@ -271,7 +265,7 @@
             </div>
           </div>
           <p class="section-text mt-3">
-            This animation uses the top-3 eigenvalues of $\mathbf{K}$ from the HumanoidBench Fig. 1 data to shape each task's ellipsoid, with
+            This animation uses the top-3 eigenvalues of <span class="math-inline-soft">K</span> from the HumanoidBench Fig. 1 data to shape each task's ellipsoid, with
             gradient-direction samples projected into the same 3D subspace.
           </p>
         </section>
